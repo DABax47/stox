@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/stox/static/css/main.a71bec85.chunk.css",
+    "main.js": "/stox/static/js/main.dfbd8c53.chunk.js",
+    "main.js.map": "/stox/static/js/main.dfbd8c53.chunk.js.map",
+    "runtime-main.js": "/stox/static/js/runtime-main.42151878.js",
+    "runtime-main.js.map": "/stox/static/js/runtime-main.42151878.js.map",
+    "static/js/2.9ee41e3d.chunk.js": "/stox/static/js/2.9ee41e3d.chunk.js",
+    "static/js/2.9ee41e3d.chunk.js.map": "/stox/static/js/2.9ee41e3d.chunk.js.map",
+    "index.html": "/stox/index.html",
+    "precache-manifest.971be90e02468fad5fd67db60f8cdadf.js": "/stox/precache-manifest.971be90e02468fad5fd67db60f8cdadf.js",
+    "service-worker.js": "/stox/service-worker.js",
+    "static/css/main.a71bec85.chunk.css.map": "/stox/static/css/main.a71bec85.chunk.css.map",
+    "static/js/2.9ee41e3d.chunk.js.LICENSE.txt": "/stox/static/js/2.9ee41e3d.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/stox/static/media/ShareTechMono-Regular.972d54ac.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.42151878.js",
+    "static/js/2.9ee41e3d.chunk.js",
+    "static/css/main.a71bec85.chunk.css",
+    "static/js/main.dfbd8c53.chunk.js"
+  ]
+}
