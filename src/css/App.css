@@ -1,0 +1,31 @@
+.component-div {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+.main-content {
+  background-color: #667697;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 20px;
+}
+h1 {
+  width: 165px;
+  font-weight: 300;
+  font-size: 45px;
+  line-height: 67px;
+  text-align: center;
+  letter-spacing: 0.4em;
+}
+h3{
+  border-right: solid #c49f6c;
+  border-left: solid #c49f6c;
+  padding: 5px;
+}
+h5{
+  color: black;
+  align-self: center;
+  margin: auto;
+}
