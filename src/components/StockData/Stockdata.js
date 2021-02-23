@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/Stockdata.css";
+import "./css/Stockdata.css";
 const Stockdata = ({ stockData, ticker, getnum }) => {
   return (
     <ul>

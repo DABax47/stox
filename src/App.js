@@ -1,18 +1,32 @@
 import React, { useState, useEffect } from "react";
-import Search from "./components/Search";
-import Stockdata from "./components/Stockdata";
-import Graph from "./components/Graph";
+import Search from "./components/Search/Search";
+import Stockdata from "./components/StockData/Stockdata";
+import Graph from "./components/Graph/Graph";
 import "./css/App.css";
 import axios from "axios";
-import { Line } from "react-chartjs-2";
+// import { Line } from "react-chartjs-2";
 const App = () => {
-  const [ticker, setStockTicker] = useState("");
   const [input, setInput] = useState("");
+  const [ticker, setStockTicker] = useState("ibm");
   const [stockData, setStockData] = useState([]);
-  const [data, setnum] = useState();
+  // const [data, setnum] = useState();
   const [chartData, setChartData] = useState({});
-let err = <h5>  Refresh and enter a stock that exists!</h5>
+  const [dimensions, setDimensions] = useState({
+    height: window.innerHeight,
+    width: window.innerWidth,
+  });
+  let err = <h5> Refresh and enter a stock that exists!</h5>;
 
+  // seperate this into a utility file
+  const formatDate = () => {
+    let yy = new Date().getFullYear();
+    let mm = new Date().getMonth() + 1;
+    let dd = new Date().getDate() - 1;
+
+    return [yy, (mm > 9 ? "" : "0") + mm, (dd > 9 ? "" : "0") + dd].join("-");
+  };
+  formatDate();
+  console.log(formatDate());
   const handleInputChange = (inpt) => {
     setInput(inpt.value);
   };
@@ -21,49 +35,29 @@ let err = <h5>  Refresh and enter a stock that exists!</h5>
     e.preventDefault();
     setStockTicker(input);
   };
-  let date = new Date(Date.now());
-  let year = date.getUTCFullYear();
-  let mo = date.getUTCMonth() + 1;
-  let day = date.getUTCDate() ;
-  let dateToday = `${year}-${pad(mo)}-${pad(day)}`;
 
-if(date.getUTCDay() > 4){
-  dateToday =`${year}-${pad(mo)}-${pad(day) - 3}`
-}else if(date.getUTCDay() < 4 && date.getHours() > 16){
-    dateToday =`${year}-${pad(mo)}-${pad(day)}`
-}else{
-dateToday =`${year}-${pad(mo)}-${pad(day) - 3}`
-}
-  function pad(num) {
-    var pad;
-    var n = num;
-    pad = "00";
-    let result = (pad + n).slice(-pad.length);
-    return result;
-  }
-  const getReq = () => {
+  const getReq = async () => {
     // const apiKey = "3OGIZIGNERYD9HS8";
     const API_KEY = process.env.REACT_APP_API_KEY;
     if (ticker) {
-      axios
-        .get(
-          `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${ticker}&outputsize=compact&apikey=${API_KEY}`
-        )
+      const fetchedStockData = await axios(
+        `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${ticker}&outputsize=compact&apikey=${API_KEY}`
+      )
         .then((data) => {
-          let fetchedStockData = data.data["Time Series (Daily)"][dateToday];
-          setStockData(fetchedStockData);
-          // CHart DATA
+          console.log(data);
+          let stockData = data["data"]["Time Series (Daily)"][formatDate()];
+          setStockData(stockData);
+          // Chart DATA
           setChartData({
-            labels: ["Open", "High", "Low", "Close"],
-
+            labels: ["Open", "Close", "High", "Low"],
             datasets: [
               {
                 // label: ticker,
                 data: [
-                  fetchedStockData["1. open"],
-                  fetchedStockData["2. high"],
-                  fetchedStockData["3. low"],
-                  fetchedStockData["4. close"],
+                  stockData["1. open"],
+                  stockData["4. close"],
+                  stockData["2. high"],
+                  stockData["3. low"],
                 ],
 
                 backgroundColor: "rgba(196, 159, 108, .7)",
@@ -74,15 +68,30 @@ dateToday =`${year}-${pad(mo)}-${pad(day) - 3}`
               },
             ],
           });
-        }).catch(()=>{
-          console.error(new Error('something went wrong'));
+        })
+        .catch((data) => {
+          console.error(new Error("something went wrong"));
         });
     }
   };
-  const chart = () => {};
+  console.log(chartData);
+
   useEffect(() => {
     getReq();
   }, [ticker]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setDimensions({
+        height: window.innerHeight,
+        width: window.innerWidth,
+      });
+    };
+    window.addEventListener("resize", handleResize());
+    return (_) => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [dimensions]);
 
   return (
     <div className="component-div">
@@ -93,10 +102,14 @@ dateToday =`${year}-${pad(mo)}-${pad(day) - 3}`
           handleInputChange={handleInputChange}
           input={input}
         />
-        <h3>{dateToday}</h3>
+        <h3>{formatDate()}</h3>
         <Stockdata stockData={stockData} ticker={ticker} />
       </div>
-      {stockData ? <Graph className='graph' chartData={chartData} ticker={ticker} /> : err}
+      {stockData ? (
+        <Graph className="graph" chartData={chartData} ticker={ticker} />
+      ) : (
+        err
+      )}
     </div>
   );
 };

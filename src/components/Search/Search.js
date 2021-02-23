@@ -1,18 +1,18 @@
 import React from "react";
-import "../css/Search.css";
-const Search = (props) => (
+import "./css/Search.css";
+const Search = ({ handleFormSubmit, handleInputChange, input }) => (
   <form
     onSubmit={(e) => {
-      props.handleFormSubmit(e);
+      handleFormSubmit(e);
     }}
   >
     <span>
       <input
         onChange={(e) => {
-          props.handleInputChange(e.target);
+          handleInputChange(e.target);
         }}
         type="text"
-        value={props.input}
+        value={input}
         placeholder="ibm"
       />
       <button type="submit" name="button">
