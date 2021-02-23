@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/stox/static/css/main.bc3c6d50.chunk.css",
+    "main.css": "/stox/static/css/main.8e896674.chunk.css",
     "main.js": "/stox/static/js/main.9fbd1104.chunk.js",
     "main.js.map": "/stox/static/js/main.9fbd1104.chunk.js.map",
     "runtime-main.js": "/stox/static/js/runtime-main.42151878.js",
@@ -8,16 +8,16 @@
     "static/js/2.635d8a64.chunk.js": "/stox/static/js/2.635d8a64.chunk.js",
     "static/js/2.635d8a64.chunk.js.map": "/stox/static/js/2.635d8a64.chunk.js.map",
     "index.html": "/stox/index.html",
-    "precache-manifest.e2a740012bd417bc76e99e79ede158b1.js": "/stox/precache-manifest.e2a740012bd417bc76e99e79ede158b1.js",
+    "precache-manifest.ddd437050f715891b24bb4c9b541dfe8.js": "/stox/precache-manifest.ddd437050f715891b24bb4c9b541dfe8.js",
     "service-worker.js": "/stox/service-worker.js",
-    "static/css/main.bc3c6d50.chunk.css.map": "/stox/static/css/main.bc3c6d50.chunk.css.map",
+    "static/css/main.8e896674.chunk.css.map": "/stox/static/css/main.8e896674.chunk.css.map",
     "static/js/2.635d8a64.chunk.js.LICENSE.txt": "/stox/static/js/2.635d8a64.chunk.js.LICENSE.txt",
     "static/media/index.css": "/stox/static/media/ShareTechMono-Regular.972d54ac.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.42151878.js",
     "static/js/2.635d8a64.chunk.js",
-    "static/css/main.bc3c6d50.chunk.css",
+    "static/css/main.8e896674.chunk.css",
     "static/js/main.9fbd1104.chunk.js"
   ]
 }
