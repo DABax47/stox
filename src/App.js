@@ -74,7 +74,6 @@ const App = () => {
         });
     }
   };
-  console.log(chartData);
 
   useEffect(() => {
     getReq();
