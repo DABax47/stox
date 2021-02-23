@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/stox/static/css/main.bc3c6d50.chunk.css",
-    "main.js": "/stox/static/js/main.bd34fdee.chunk.js",
-    "main.js.map": "/stox/static/js/main.bd34fdee.chunk.js.map",
+    "main.js": "/stox/static/js/main.382e6663.chunk.js",
+    "main.js.map": "/stox/static/js/main.382e6663.chunk.js.map",
     "runtime-main.js": "/stox/static/js/runtime-main.42151878.js",
     "runtime-main.js.map": "/stox/static/js/runtime-main.42151878.js.map",
     "static/js/2.f9746c8f.chunk.js": "/stox/static/js/2.f9746c8f.chunk.js",
     "static/js/2.f9746c8f.chunk.js.map": "/stox/static/js/2.f9746c8f.chunk.js.map",
     "index.html": "/stox/index.html",
-    "precache-manifest.5ab31021231f635376d92551f51aff2b.js": "/stox/precache-manifest.5ab31021231f635376d92551f51aff2b.js",
+    "precache-manifest.e5bc68855d6c00bf83b8f7941a9b0de4.js": "/stox/precache-manifest.e5bc68855d6c00bf83b8f7941a9b0de4.js",
     "service-worker.js": "/stox/service-worker.js",
     "static/css/main.bc3c6d50.chunk.css.map": "/stox/static/css/main.bc3c6d50.chunk.css.map",
     "static/js/2.f9746c8f.chunk.js.LICENSE.txt": "/stox/static/js/2.f9746c8f.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.42151878.js",
     "static/js/2.f9746c8f.chunk.js",
     "static/css/main.bc3c6d50.chunk.css",
-    "static/js/main.bd34fdee.chunk.js"
+    "static/js/main.382e6663.chunk.js"
   ]
 }
