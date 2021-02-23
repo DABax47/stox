@@ -7,14 +7,11 @@ import axios from "axios";
 // import { Line } from "react-chartjs-2";
 const App = () => {
   const [input, setInput] = useState("");
-  const [ticker, setStockTicker] = useState("ibm");
+  const [ticker, setStockTicker] = useState("");
   const [stockData, setStockData] = useState([]);
   // const [data, setnum] = useState();
   const [chartData, setChartData] = useState({});
-  const [dimensions, setDimensions] = useState({
-    height: window.innerHeight,
-    width: window.innerWidth,
-  });
+
   let err = <h5> Refresh and enter a stock that exists!</h5>;
 
   // seperate this into a utility file
@@ -22,7 +19,6 @@ const App = () => {
     let yy = new Date().getFullYear();
     let mm = new Date().getMonth() + 1;
     let dd = new Date().getDate() - 1;
-
     return [yy, (mm > 9 ? "" : "0") + mm, (dd > 9 ? "" : "0") + dd].join("-");
   };
 
@@ -36,7 +32,6 @@ const App = () => {
   };
 
   const getReq = async () => {
-    // const apiKey = "3OGIZIGNERYD9HS8";
     const API_KEY = process.env.REACT_APP_API_KEY;
     if (ticker) {
       const fetchedStockData = await axios(
@@ -69,28 +64,15 @@ const App = () => {
           });
         })
         .catch((data) => {
-          console.error(new Error("something went wrong"));
+          console.error(new Error("Server Error"));
         });
     }
   };
 
   useEffect(() => {
     getReq();
-  }, [ticker]);
-
-  useEffect(() => {
     formatDate();
-    const handleResize = () => {
-      setDimensions({
-        height: window.innerHeight,
-        width: window.innerWidth,
-      });
-    };
-    window.addEventListener("resize", handleResize());
-    return (_) => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [dimensions]);
+  });
 
   return (
     <div className="component-div">

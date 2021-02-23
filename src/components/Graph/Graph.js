@@ -1,5 +1,5 @@
 import React from "react";
-import { Line, Bar } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import "./css/Graph.css";
 const Graph = ({ chartData, ticker }) => {
   return (
