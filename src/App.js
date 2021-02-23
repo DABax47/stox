@@ -25,8 +25,7 @@ const App = () => {
 
     return [yy, (mm > 9 ? "" : "0") + mm, (dd > 9 ? "" : "0") + dd].join("-");
   };
-  formatDate();
-  console.log(formatDate());
+
   const handleInputChange = (inpt) => {
     setInput(inpt.value);
   };
@@ -80,6 +79,7 @@ const App = () => {
   }, [ticker]);
 
   useEffect(() => {
+    formatDate();
     const handleResize = () => {
       setDimensions({
         height: window.innerHeight,
