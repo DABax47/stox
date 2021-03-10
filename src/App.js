@@ -4,14 +4,16 @@ import Stockdata from "./components/StockData/Stockdata";
 import Graph from "./components/Graph/Graph";
 import "./css/App.css";
 import axios from "axios";
+
 // import { Line } from "react-chartjs-2";
 const App = () => {
   const [input, setInput] = useState("");
-  const [ticker, setStockTicker] = useState("");
+  const [ticker, setStockTicker] = useState("ibm");
   const [stockData, setStockData] = useState([]);
+  const [yData, setyData] = useState([]);
   // const [data, setnum] = useState();
   const [chartData, setChartData] = useState({});
-
+  const [date, setDate] = useState([]);
   let err = <h5> Refresh and enter a stock that exists!</h5>;
 
   // seperate this into a utility file
@@ -38,30 +40,27 @@ const App = () => {
         `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${ticker}&outputsize=compact&apikey=${API_KEY}`
       )
         .then((data) => {
-          console.log(data);
-          let stockData = data["data"]["Time Series (Daily)"][formatDate()];
-          setStockData(stockData);
-          // Chart DATA
-          setChartData({
-            labels: ["Open", "Close", "High", "Low"],
-            datasets: [
-              {
-                // label: ticker,
-                data: [
-                  stockData["1. open"],
-                  stockData["4. close"],
-                  stockData["2. high"],
-                  stockData["3. low"],
-                ],
-
-                backgroundColor: "rgba(196, 159, 108, .7)",
-                hoverBackgroundColor: "#667697",
-                pointBackgroundColor: "#555",
-                pointStyle: "circle",
-                hitRadius: "2",
-              },
-            ],
-          });
+          let dates = [];
+          let openValues = [];
+          let stockData = [];
+          let stockObj = data["data"]["Time Series (Daily)"];
+          for (var dateData in stockObj) {
+            dates.push(dateData);
+            openValues.push(stockObj[dateData]["1. open"]);
+            setStockData(stockObj[dateData]);
+          }
+          setDate(dates);
+          setyData(openValues);
+          console.log(
+            "date",
+            date,
+            "openValues",
+            openValues,
+            "stockData",
+            stockData,
+            "OBJ",
+            stockObj
+          );
         })
         .catch((data) => {
           console.error(new Error("Server Error"));
@@ -71,8 +70,7 @@ const App = () => {
 
   useEffect(() => {
     getReq();
-    formatDate();
-  });
+  }, [ticker]);
 
   return (
     <div className="component-div">
@@ -87,9 +85,9 @@ const App = () => {
         <Stockdata stockData={stockData} ticker={ticker} />
       </div>
       {stockData ? (
-        <Graph className="graph" chartData={chartData} ticker={ticker} />
+        <Graph xDate={date} yData={yData} ticker={ticker} />
       ) : (
-        err
+        <p> Server Error</p>
       )}
     </div>
   );
