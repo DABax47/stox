@@ -1,10 +1,10 @@
 import React from "react";
-import { Bar } from "react-chartjs-2";
+import { Line, Bar } from "react-chartjs-2";
 import "./css/Graph.css";
 const Graph = ({ chartData, ticker }) => {
   return (
     <div className="graph">
-      <Bar
+      <Line
         data={chartData}
         options={{
           responsive: true,

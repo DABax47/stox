@@ -7,10 +7,11 @@ import axios from "axios";
 // import { Line } from "react-chartjs-2";
 const App = () => {
   const [input, setInput] = useState("");
-  const [ticker, setStockTicker] = useState("");
+  const [ticker, setStockTicker] = useState("x");
   const [stockData, setStockData] = useState([]);
   // const [data, setnum] = useState();
   const [chartData, setChartData] = useState({});
+  const [xDates, setDates] = useState([]);
 
   let err = <h5> Refresh and enter a stock that exists!</h5>;
 
@@ -38,23 +39,28 @@ const App = () => {
         `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${ticker}&outputsize=compact&apikey=${API_KEY}`
       )
         .then((data) => {
-          console.log(data);
-          let stockData = data["data"]["Time Series (Daily)"][formatDate()];
-          setStockData(stockData);
+          let stockData = data["data"]["Time Series (Daily)"];
+          let date = [];
+          let openData = [];
+          for (var key in stockData) {
+            date.push(key);
+            openData.push(parseInt(stockData[key]["1. open"]));
+            setDates(date);
+            setStockData(stockData[key]);
+          }
+          console.log(openData);
+          console.log(date);
           // Chart DATA
+
           setChartData({
-            labels: ["Open", "Close", "High", "Low"],
+            labels: date,
             datasets: [
               {
                 // label: ticker,
-                data: [
-                  stockData["1. open"],
-                  stockData["4. close"],
-                  stockData["2. high"],
-                  stockData["3. low"],
-                ],
+                data: openData,
+                fill: false,
 
-                backgroundColor: "rgba(196, 159, 108, .7)",
+                backgroundColor: "rgba(196, 159, 108, 1)",
                 hoverBackgroundColor: "#667697",
                 pointBackgroundColor: "#555",
                 pointStyle: "circle",
@@ -72,7 +78,7 @@ const App = () => {
   useEffect(() => {
     getReq();
     formatDate();
-  });
+  }, [ticker]);
 
   return (
     <div className="component-div">
