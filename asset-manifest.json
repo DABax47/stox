@@ -1,23 +1,19 @@
 {
   "files": {
-    "main.css": "/stox/static/css/main.8e896674.chunk.css",
-    "main.js": "/stox/static/js/main.9fbd1104.chunk.js",
-    "main.js.map": "/stox/static/js/main.9fbd1104.chunk.js.map",
+    "main.css": "/stox/static/css/main.e6ec2499.chunk.css",
+    "main.js": "/stox/static/js/main.d3eaf096.chunk.js",
     "runtime-main.js": "/stox/static/js/runtime-main.42151878.js",
-    "runtime-main.js.map": "/stox/static/js/runtime-main.42151878.js.map",
-    "static/js/2.635d8a64.chunk.js": "/stox/static/js/2.635d8a64.chunk.js",
-    "static/js/2.635d8a64.chunk.js.map": "/stox/static/js/2.635d8a64.chunk.js.map",
+    "static/js/2.4f4ebc13.chunk.js": "/stox/static/js/2.4f4ebc13.chunk.js",
     "index.html": "/stox/index.html",
-    "precache-manifest.ddd437050f715891b24bb4c9b541dfe8.js": "/stox/precache-manifest.ddd437050f715891b24bb4c9b541dfe8.js",
+    "precache-manifest.7e142b245abd0b6322c8ed6d0e5f2c05.js": "/stox/precache-manifest.7e142b245abd0b6322c8ed6d0e5f2c05.js",
     "service-worker.js": "/stox/service-worker.js",
-    "static/css/main.8e896674.chunk.css.map": "/stox/static/css/main.8e896674.chunk.css.map",
-    "static/js/2.635d8a64.chunk.js.LICENSE.txt": "/stox/static/js/2.635d8a64.chunk.js.LICENSE.txt",
+    "static/js/2.4f4ebc13.chunk.js.LICENSE.txt": "/stox/static/js/2.4f4ebc13.chunk.js.LICENSE.txt",
     "static/media/index.css": "/stox/static/media/ShareTechMono-Regular.972d54ac.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.42151878.js",
-    "static/js/2.635d8a64.chunk.js",
-    "static/css/main.8e896674.chunk.css",
-    "static/js/main.9fbd1104.chunk.js"
+    "static/js/2.4f4ebc13.chunk.js",
+    "static/css/main.e6ec2499.chunk.css",
+    "static/js/main.d3eaf096.chunk.js"
   ]
 }
