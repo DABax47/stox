@@ -59,10 +59,10 @@ const App = () => {
                 // label: ticker,
                 data: openData,
                 fill: false,
-
+                borderColor: "rgba(0,0,0,.5)",
                 backgroundColor: "rgba(196, 159, 108, 1)",
                 hoverBackgroundColor: "#667697",
-                pointBackgroundColor: "#555",
+                pointBackgroundColor: "rgba(196, 159, 108, 1)",
                 pointStyle: "circle",
                 hitRadius: "2",
               },
